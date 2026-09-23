@@ -1,0 +1,10 @@
+# local pipeline outputs (demo_data/ IS committed - it powers the hosted dashboard)
+data/
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+spark-warehouse/
+metastore_db/
+*.log
+.DS_Store

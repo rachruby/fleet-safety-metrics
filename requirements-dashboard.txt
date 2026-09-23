@@ -1,0 +1,5 @@
+# Lightweight deps for the hosted dashboard only (no Spark / Java needed)
+streamlit>=1.50
+plotly>=5.18
+pandas>=2.0
+pyarrow>=14

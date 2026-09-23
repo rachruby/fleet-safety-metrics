@@ -1,0 +1,12 @@
+# Render Blueprint: the hosted dashboard reads pre-computed tables in demo_data/.
+# The Spark pipeline runs offline (locally); only its small gold/silver output is deployed.
+services:
+  - type: web
+    name: fleet-safety-metrics
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-dashboard.txt
+    startCommand: streamlit run dashboard/app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true -- --data demo_data
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
