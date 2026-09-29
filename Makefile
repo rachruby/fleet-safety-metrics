@@ -29,3 +29,10 @@ demo-data:            ## publish pipeline output to the deployed dashboard folde
 	cp -r $(DATA)/gold $(DATA)/silver demo_data/
 	find demo_data -name '*.crc' -delete; find demo_data -name '_SUCCESS' -delete
 	@echo "now update demo_data/source.json to describe the real data, then git push"
+
+hf-demo:              ## REAL data, fast: 64 comma2k19 segments (228 MB) from the Hugging Face mirror
+	mkdir -p data/hf
+	for i in 0 1 2; do curl -L -C - -o data/hf/demo-0000$$i-of-00003.parquet \
+	  "https://huggingface.co/datasets/commaai/comma2k19/resolve/main/data/demo-0000$$i-of-00003.parquet"; done
+	$(PYTHON) tools/hf_demo_to_layout.py --parquet data/hf --out data/raw
+	$(MAKE) ingest metrics
