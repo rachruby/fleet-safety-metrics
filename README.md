@@ -1,8 +1,8 @@
 # Fleet Safety Metrics
 
-**Live demo:** _add your Render URL here_ (currently showing synthetic demo data; see [Deployment](#deployment))
+**Live demo:** https://fleet-safety-metrics.onrender.com/
 
-A Spark SQL pipeline that turns raw vehicle logs from the public **comma2k19** dataset (33 hours of real highway driving, CAN bus + radar + GNSS) into exposure-normalised safety metrics, mines the most interesting driving scenarios, and serves the results on a dashboard.
+I started working on the project to figure out how different driving scenarios could result in a visualized dashboard. So I quickly "jammed" a bunch of datasets/logs retrieved to filter out a bunch of metrics. A Spark SQL pipeline that turns raw vehicle logs from the public **comma2k19** dataset (33 hours of real highway driving, CAN bus + radar + GNSS) into exposure-normalised safety metrics, mines the most interesting driving scenarios, and serves the results on a dashboard.
 
 ```
 comma2k19 .npy logs ──ingest──▶ BRONZE (Parquet, long format)
